@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "email-filter-allowlist"
+  ],
+  "parentResource": "eduhostapp1252b7d6",
+  "functionName": "eduhostapp1252b7d6PreSignup",
+  "resourceName": "eduhostapp1252b7d6PreSignup",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "C:\\snapshot\\amplify-cli\\build\\node_modules\\@aws-amplify\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\PreSignup",
+  "triggerTemplate": "PreSignup.json.ejs",
+  "triggerEventPath": "PreSignup.event.json",
+  "roleName": "eduhostapp1252b7d6PreSignup",
+  "skipEdit": true
+}

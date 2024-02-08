@@ -1,0 +1,169 @@
+{
+  "auth": {
+    "eduhostapp1252b7d6": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "eduhostapp1252b7d6PreSignup",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL",
+          "NAME"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "eduhostapp1252b7d6PreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "eduhostapp8a1ee75fCustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "eduhostapp8a1ee75fPreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "eduhostappabea6396PreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_eduhostapp1252b7d6PreSignup_DOMAINALLOWLIST": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp1252b7d6PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp1252b7d6PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp1252b7d6PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp1252b7d6PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp1252b7d6PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fCustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fCustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fCustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fCustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fCustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fPreSignup_DOMAINALLOWLIST": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fPreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp8a1ee75fPreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp8a1ee75fPreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostappabea6396PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostappabea6396PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostappabea6396PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostappabea6396PreSignup"
+        }
+      ]
+    }
+  }
+}
