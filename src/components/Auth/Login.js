@@ -24,7 +24,7 @@ const Login = ({ signOut, user }) => {
       <NavBar/>
       <header className="App-header">
         <div className="App-title">
-          <Heading level={1}>Hello {user.name}</Heading>
+          <Heading level={1}>Hello {user.username}</Heading>
           <Button onClick={signOut}>Sign out</Button>
           <h1>Login to</h1>
           <img src={appLogo} alt="App Logo" className="App-logo" />

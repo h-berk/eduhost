@@ -14,10 +14,20 @@
     },
     "categories": {
       "function": {
+        "eduhostapp1252b7d6PreSignup": {
+          "DOMAINALLOWLIST": "mail.wit.ie, wit.ie",
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/eduhostapp1252b7d6PreSignup-3073316a535376656867-build.zip"
+        },
+        "eduhostapp442797b3PreSignup": {
+          "DOMAINALLOWLIST": "wit.ie, setu.ie",
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/eduhostapp442797b3PreSignup-59313843665a34706c2f-build.zip"
+        },
         "eduhostapp8a1ee75fCustomMessage": {
-          "REDIRECTURL": "www.eduhost.ie/home",
-          "EMAILSUBJECT": "EduHost Confirm Signup",
           "EMAILMESSAGE": "Please click here to verify your email address to sign up for EduHost:",
+          "EMAILSUBJECT": "EduHost Confirm Signup",
+          "REDIRECTURL": "www.eduhost.ie/home",
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostapp8a1ee75fCustomMessage-74753477794341743939-build.zip"
         },
@@ -26,18 +36,18 @@
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostapp8a1ee75fPreSignup-3557514263522b545350-build.zip"
         },
-        "eduhostapp1252b7d6PreSignup": {
-          "DOMAINALLOWLIST": "mail.wit.ie, wit.ie",
-          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
-          "s3Key": "amplify-builds/eduhostapp1252b7d6PreSignup-3073316a535376656867-build.zip"
-        },
         "eduhostappabea6396PreSignup": {
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostappabea6396PreSignup-3073674b697041686f77-build.zip"
+        },
+        "eduhostapp4035ae18PreSignup": {
+          "DOMAINALLOWLIST": "mail.wit.ie, wit.ie, setu.ie",
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/eduhostapp4035ae18PreSignup-57647751333749687345-build.zip"
         }
       },
       "auth": {
-        "eduhostapp1252b7d6": {}
+        "eduhostapp4035ae18": {}
       }
     }
   }

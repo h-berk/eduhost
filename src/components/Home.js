@@ -6,9 +6,21 @@ import { Amplify } from 'aws-amplify';
 import amplifyconfig from '../amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Heading, Button } from '@aws-amplify/ui-react';
+import { fetchUserAttributes } from 'aws-amplify/auth';
 Amplify.configure(amplifyconfig);
 
 const HomePage = ({ signOut, user }) => {
+
+  async function handleFetchUserAttributes() {
+    try {
+      const userAttributes = await fetchUserAttributes();
+      console.log(userAttributes);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  handleFetchUserAttributes()
   return (
     <div className="App">
       <NavBar/>

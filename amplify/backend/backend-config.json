@@ -1,6 +1,6 @@
 {
   "auth": {
-    "eduhostapp1252b7d6": {
+    "eduhostapp4035ae18": {
       "customAuth": false,
       "dependsOn": [
         {
@@ -9,7 +9,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "eduhostapp1252b7d6PreSignup",
+          "resourceName": "eduhostapp4035ae18PreSignup",
           "triggerProvider": "Cognito"
         }
       ],
@@ -27,9 +27,7 @@
           "NAME"
         ],
         "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
@@ -40,6 +38,16 @@
   },
   "function": {
     "eduhostapp1252b7d6PreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "eduhostapp4035ae18PreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "eduhostapp442797b3PreSignup": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -82,6 +90,54 @@
         {
           "category": "function",
           "resourceName": "eduhostapp1252b7d6PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp4035ae18PreSignup_DOMAINALLOWLIST": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp4035ae18PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp4035ae18PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp4035ae18PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp4035ae18PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp4035ae18PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp442797b3PreSignup_DOMAINALLOWLIST": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp442797b3PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp442797b3PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp442797b3PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostapp442797b3PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostapp442797b3PreSignup"
         }
       ]
     },

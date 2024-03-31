@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "eduhostapp1252b7d6_identitypool_1252b7d6",
+    "identityPoolName": "eduhostapp4035ae18_identitypool_4035ae18",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "eduhos1252b7d6",
-    "userPoolName": "eduhostapp1252b7d6_userpool_1252b7d6",
+    "resourceNameTruncated": "eduhos4035ae18",
+    "userPoolName": "eduhostapp4035ae18_userpool_4035ae18",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,8 +14,8 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Your verification code",
-    "emailVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "EduHost Verification Code",
+    "emailVerificationMessage": "Thank you for signing up to EduHost. Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
@@ -32,15 +32,12 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "eduhos1252b7d6_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "eduhos4035ae18_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "1252b7d6",
-    "resourceName": "eduhostapp1252b7d6",
+    "sharedId": "4035ae18",
+    "resourceName": "eduhostapp4035ae18",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
-    "usernameAttributes": [
-      "email"
-    ],
     "triggers": {
       "PreSignup": [
         "email-filter-allowlist"

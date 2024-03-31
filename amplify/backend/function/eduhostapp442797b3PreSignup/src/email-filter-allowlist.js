@@ -9,7 +9,7 @@ exports.handler = async (event) => {
   const domain = email.substring(email.indexOf('@') + 1);
 
   if (!ald.includes(domain)) {
-    throw new Error(`Invalid email domain, please use your WIT email address: ${domain}`);
+    throw new Error(`Please use your SETU email address`);
   }
 
   return event;
