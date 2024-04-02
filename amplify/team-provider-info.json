@@ -44,10 +44,17 @@
           "DOMAINALLOWLIST": "mail.wit.ie, wit.ie, setu.ie",
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostapp4035ae18PreSignup-57647751333749687345-build.zip"
-        }
+        },
+        "policy": {}
       },
       "auth": {
         "eduhostapp4035ae18": {}
+      },
+      "storage": {
+        "eduhostappe7b01163": {
+          "bucketName": "setu.eduhost.ie",
+          "region": "eu-west-1"
+        }
       }
     }
   }

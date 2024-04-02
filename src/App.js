@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import LandingPage from './components/LandingPage';
-import LoginPage from './components/Auth/Login'
+import DashboardPage from './components/Auth/Dashboard'
 import AboutPage from './components/About';
 import ContactPage from './components/Contact';
-import HomePage from './components/Home';
+import DeployerPage from './components/Auth/Deployer'
 import { Amplify } from 'aws-amplify';
 import amplifyconfig from './amplifyconfiguration.json';
 Amplify.configure(amplifyconfig);
@@ -19,8 +19,8 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/deployer" element={<DeployerPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

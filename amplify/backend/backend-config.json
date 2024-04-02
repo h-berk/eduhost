@@ -66,6 +66,12 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "policy": {
+      "s3Auth": {
+        "providerPlugin": "awscloudformation",
+        "service": "iam"
+      }
     }
   },
   "parameters": {
@@ -220,6 +226,30 @@
           "resourceName": "eduhostappabea6396PreSignup"
         }
       ]
+    },
+    "AMPLIFY_storage_eduhostappe7b01163_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "eduhostappe7b01163"
+        }
+      ]
+    },
+    "AMPLIFY_storage_eduhostappe7b01163_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "eduhostappe7b01163"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "eduhostappe7b01163": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3",
+      "serviceType": "imported"
     }
   }
 }

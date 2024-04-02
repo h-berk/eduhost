@@ -1,0 +1,68 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "inline policy for S3 access",
+    "Parameters": {
+      "authRoleName": {
+        "Type": "String"
+      },
+      "env": {
+        "Type": "String"
+      }
+    },
+    "Conditions": {
+      "ShouldNotCreateEnvResources": {
+        "Fn::Equals": [
+          {
+            "Ref": "env"
+          },
+          "NONE"
+        ]
+      }
+    },
+    "Resources": {
+      "s3sappolicy": {
+        "Type": "AWS::IAM::Policy",
+        "Properties": {
+          "PolicyName": "s3-policy-for-bucket-access",
+          "Roles": [
+            {
+              "Ref": "authRoleName"
+            }
+          ],
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "InteractWithObjects",
+                "Effect": "Allow",
+                "Action": [
+                  "s3:PutObject",
+                  "s3:GetObject",
+                  "s3:DeleteObject"
+                ],
+                "Resource": [
+                  "arn:aws:s3:::setu.eduhost.ie/*"
+                ]
+              },
+              {
+                "Sid": "ListBucket",
+                "Effect": "Allow",
+                "Action": "s3:ListBucket",
+                "Resource": [
+                  "arn:aws:s3:::setu.eduhost.ie"
+                ],
+                "Condition": {
+                  "StringLike": {
+                    "s3:prefix": [
+                      "*"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+  
