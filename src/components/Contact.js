@@ -1,76 +1,28 @@
 import React, { useState } from 'react';
 import '../App.css';
-import appLogo from '../assets/images/app_logo.png';
 import NavBar from './common/NavBar';
+import { ContactForm } from '../ui-components';
+
+// Blank form, just resets when submit button is clicked
 
 function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-      });
-    
-      const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value});
-      }
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        // TODO
-        setFormData({
-            name: '',
-            email: '',
-            message: ''
-          });
-        alert("Form submitted!");
-      }
+  const [formKey, setFormKey] = useState(0);
+
+  const handleSubmit = () => {
+    setFormKey(prevKey => prevKey + 1); // Increment the key to force re-render
+  };
+
   return (
     <div className="App">
       <NavBar/>
       <header className="App-header">
         <div className="App-title">
-          <h1>Contact</h1>
-          <img src={appLogo} alt="App Logo" className="App-logo" />
+          {/* Pass handleSubmit and use formKey to force re-render */}
+          <ContactForm key={formKey} onSubmit={handleSubmit} />
         </div>
-        <div className="contact-form-container">
-      <form onSubmit={handleSubmit} className="contact-form">
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
-    </div>
       </header>
     </div>
   );
 }
+
 export default ContactPage;

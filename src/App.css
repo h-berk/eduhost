@@ -46,11 +46,37 @@
 .App-nav ul {
   list-style-type: none;
   margin: 0;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
   padding: 0;
+}
+
+.logo {
+  flex-grow: 0.8;
+  text-align: center;
+}
+
+.logo img {
+  max-height: 50px; /* Adjust based on your preference */
+}
+
+.unauth-logo {
+  flex-grow: 0.9;
+  text-align: center;
+}
+
+.unauth-logo img {
+  max-height: 50px; /* Adjust based on your preference */
 }
 
 .App-nav li {
   float: left;
+}
+
+.login-signup {
+  margin-left: auto; /* Pushes the sign out button to the right */
 }
 
 .App-nav a {
@@ -115,3 +141,5 @@
 .submit-button:hover {
   background-color: #0056b3;
 }
+
+

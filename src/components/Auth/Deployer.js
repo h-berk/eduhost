@@ -5,7 +5,7 @@ import appLogo from '../../assets/images/app_logo.png';
 import ProtectedNavBar from '../common/ProtectedNavBar';
 import amplifyconfig from '../../amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
-import { withAuthenticator, Heading, Button } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 
 Amplify.configure(amplifyconfig, {
@@ -55,14 +55,6 @@ const DeployerPage = ({ signOut, user }) => {
     <div className="App">
       <ProtectedNavBar />
       <header className="App-header">
-        <div>
-          <Heading level={1}>Hello {user.username}</Heading>
-          <Button onClick={signOut}>Sign out</Button>
-        </div>
-        <div className="App-title">
-          <h1>Welcome to</h1>
-          <img src={appLogo} alt="App Logo" className="App-logo" />
-        </div>
         <input type="file" onChange={handleFileChange} accept=".html" />
       </header>
     </div>
