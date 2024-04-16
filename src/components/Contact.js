@@ -15,12 +15,12 @@ function ContactPage() {
   return (
     <div className="App">
       <NavBar/>
-      <header className="App-header">
+      <main className="App-main">
         <div className="App-title">
           {/* Pass handleSubmit and use formKey to force re-render */}
           <ContactForm key={formKey} onSubmit={handleSubmit} />
         </div>
-      </header>
+      </main>
     </div>
   );
 }

@@ -20,8 +20,8 @@
   }
 }
 
-.App-header {
-  background-color: #dfe0ff;
+.App-main {
+  background-image: linear-gradient(180deg, rgb(135, 231, 255), rgb(249, 202, 255));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,9 +36,10 @@
 }
 
 .App-nav {
-  background-color: #bd8aff;
+  background: transparent;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
+  z-index: 1000;
   top: 0;
   width: 100%;
 }
@@ -51,6 +52,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 0;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 500px; /* Maximum form width */
+  padding-top: 100px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 60px; /* Add some margin outside the form */
 }
 
 .logo {
@@ -142,4 +153,55 @@
   background-color: #0056b3;
 }
 
+.file-drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.file-message {
+  margin-bottom: 20px;
+}
+
+.file-upload-btn {
+  color: #007bff;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+}
+
+.file-details {
+  margin-top: 10px;
+  color: #555;
+}
+
+.login-signup {
+  padding-right: 5px;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dashboard-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 20px 40px; 
+  border: none; /* No border */
+  border-radius: 10px; 
+  cursor: pointer; 
+  font-size: 24px; 
+}
+
+.dashboard-button:hover {
+  background-color: #db91f9; 
+}
 

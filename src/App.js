@@ -6,6 +6,7 @@ import DashboardPage from './components/Auth/Dashboard'
 import AboutPage from './components/About';
 import ContactPage from './components/Contact';
 import DeployerPage from './components/Auth/Deployer'
+import BuilderPage from './components/Auth/Builder'
 import { Amplify } from 'aws-amplify';
 import amplifyconfig from './amplifyconfiguration.json';
 Amplify.configure(amplifyconfig);
@@ -15,12 +16,12 @@ function App() {
     <Router>
       <div className="App">
         <nav className="App-nav">
-          {/* Navigation links can be added here */}
         </nav>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/deployer" element={<DeployerPage />} />
+          <Route path="/builder" element={<BuilderPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

@@ -5,7 +5,7 @@ import ProtectedNavBar from '../common/ProtectedNavBar';
 import { Amplify } from 'aws-amplify';
 import amplifyconfig from '../../amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
-import { withAuthenticator, Heading } from '@aws-amplify/ui-react';
+import { withAuthenticator, Heading, Button } from '@aws-amplify/ui-react';
 
 Amplify.configure(amplifyconfig);
 
@@ -18,14 +18,22 @@ const DashboardPage = ({ signOut, user }) => {
     }
   }, [user, navigate]);
 
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
     <div className="App">
       <ProtectedNavBar/>
-      <header className="App-header">
-        <div className="App-title">
-          <Heading level={1}>Hello {user.username}</Heading>
+      <main className="App-main">
+      <div className="App-title">
+      <Heading level={1}>Hello {user.username}</Heading>
+      </div>
+        <div className="button-group">
+          <Button onClick={() => handleNavigate('/builder')} className="dashboard-button">Builder</Button>
+          <Button onClick={() => handleNavigate('/deployer')} className="dashboard-button">Deployer</Button>
         </div>
-      </header>
+      </main>
     </div>
   );
 }

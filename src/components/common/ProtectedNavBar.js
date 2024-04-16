@@ -13,8 +13,8 @@ const ProtectedNavBar = ({ signOut }) => {
         <nav className="App-nav">
             <ul>
                 <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/builder">Builder</a></li>
                 <li><a href="/deployer">Deployer</a></li>
-                <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li className="logo"><img src={navBarLogo} alt="App Logo" /></li>
                 <li className="login-signup"><Button onClick={signOut}>Sign out</Button></li>

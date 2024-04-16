@@ -7,12 +7,11 @@ function LandingPage() {
   return (
     <div className="App">
       <NavBar/>
-      <header className="App-header">
-        <div className="App-title">
-          <h1>Welcome to</h1>
-          <img src={appLogo} alt="App Logo" className="App-logo" />
+      <main className="App-main">
+        <div className="App-landing-text">
+          <h2>Website Hosting for Students. From Students</h2>
         </div>
-      </header>
+      </main>
     </div>
   );
 }

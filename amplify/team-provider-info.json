@@ -19,6 +19,11 @@
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostapp1252b7d6PreSignup-3073316a535376656867-build.zip"
         },
+        "eduhostapp4035ae18PreSignup": {
+          "DOMAINALLOWLIST": "mail.wit.ie, wit.ie, setu.ie",
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/eduhostapp4035ae18PreSignup-57647751333749687345-build.zip"
+        },
         "eduhostapp442797b3PreSignup": {
           "DOMAINALLOWLIST": "wit.ie, setu.ie",
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
@@ -40,21 +45,16 @@
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostappabea6396PreSignup-3073674b697041686f77-build.zip"
         },
-        "eduhostapp4035ae18PreSignup": {
-          "DOMAINALLOWLIST": "mail.wit.ie, wit.ie, setu.ie",
-          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
-          "s3Key": "amplify-builds/eduhostapp4035ae18PreSignup-57647751333749687345-build.zip"
-        },
         "policy": {}
-      },
-      "auth": {
-        "eduhostapp4035ae18": {}
       },
       "storage": {
         "eduhostappe7b01163": {
           "bucketName": "setu.eduhost.ie",
           "region": "eu-west-1"
         }
+      },
+      "auth": {
+        "eduhostapp4035ae18": {}
       }
     }
   }

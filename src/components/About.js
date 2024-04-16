@@ -1,13 +1,12 @@
 import React from 'react';
 import '../App.css';
-import appLogo from '../assets/images/app_logo.png';
 import NavBar from './common/NavBar';
 
 function AboutPage() {
   return (
     <div className="App">
       <NavBar/>
-      <header className="App-header">
+      <main className="App-main">
         <div className="App-title">
         <h1>About Us</h1>
         </div>
@@ -18,7 +17,7 @@ function AboutPage() {
             Whether you have zero coding experience or have your own static website already built, EduHost is the platform to provide you with the tools and resources to succeed.
           </p>
         </div>
-      </header>
+      </main>
     </div>
   );
 }
