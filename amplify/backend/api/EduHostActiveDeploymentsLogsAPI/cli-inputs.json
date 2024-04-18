@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/deployments": {
+      "name": "/deployments",
+      "lambdaFunction": "EduHostActiveDeploymentsLogsLambda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "resourceName": "EduHostActiveDeploymentsLogs",
+  "tableName": "EduHostActiveDeploymentsLogs",
+  "partitionKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

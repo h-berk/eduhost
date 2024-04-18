@@ -6,6 +6,7 @@ import amplifyconfig from '../../amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Button } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
+import { put } from 'aws-amplify/api';
 
 Amplify.configure(amplifyconfig, {
   Storage: {
@@ -58,13 +59,42 @@ const DeployerPage = ({ signOut, user }) => {
       });
       console.log('File uploaded:', result);
       alert('File uploaded successfully!');
+      await postDeploymentLog({
+        userId: user.username,
+        fileName: file.name,
+        lastUpdateTime: new Date().toISOString(),
+        status: 'DEPLOYED'
+      });
     } catch (error) {
       console.error('Error uploading file:', error);
       alert('Error uploading file.');
     }
   };
+  
+  async function postDeploymentLog(record) {
+    try {
+      const restOperation = put({
+        apiName: 'EduHostActiveDeploymentsLogsAPI',
+        path: '/deployments',
+        options: {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: record
+        }
+      });
+    
+      const { body } = await restOperation.response;
+      const response = await body.json();
+  
+      console.log('Deployment log upload succeeded');
+      console.log(response);
+    } catch (e) {
+      console.log('Deployment log upload failed: ', JSON.parse(e.response.body));
+    }
+  }
 
-  const handleDelete = async (filename) => {
+  const handleDelete = async (filename) => { // TODO
     try {
       await remove({ key: filename });
     } catch (error) {
@@ -72,7 +102,7 @@ const DeployerPage = ({ signOut, user }) => {
     }
   }
 
-  const listFiles = async (user) => {
+  const listFiles = async (user) => { // TODO
     try {
       const result = await list({
         prefix: `${user.username}`

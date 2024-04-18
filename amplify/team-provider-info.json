@@ -10,7 +10,8 @@
       "StackName": "amplify-eduhostapp-dev-180945",
       "StackId": "arn:aws:cloudformation:eu-west-1:896710063010:stack/amplify-eduhostapp-dev-180945/927517e0-c388-11ee-b0ea-023152878841",
       "AmplifyAppId": "d2i9glx1zuc3hj",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-eduhostapp-dev-180945-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-eduhostapp-dev-180945-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-eduhostapp-dev-180945-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
@@ -45,16 +46,43 @@
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostappabea6396PreSignup-3073674b697041686f77-build.zip"
         },
-        "policy": {}
+        "policy": {},
+        "eduhostdeploymentlogslambda": {
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/eduhostdeploymentlogslambda-476b48346f6f39536b68-build.zip"
+        },
+        "deploymentLogsLambda": {
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/deploymentLogsLambda-4c4f73797a4939346266-build.zip"
+        },
+        "deploymentsLogsLambda": {
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/deploymentsLogsLambda-544b30672b4377624647-build.zip"
+        },
+        "EduHostActiveDeploymentsLambda": {
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/EduHostActiveDeploymentsLambda-36377575374b36797a76-build.zip"
+        },
+        "EduHostActiveDeploymentsLogsLambda": {
+          "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
+          "s3Key": "amplify-builds/EduHostActiveDeploymentsLogsLambda-35467332416a4c757930-build.zip"
+        }
       },
       "storage": {
         "eduhostappe7b01163": {
           "bucketName": "setu.eduhost.ie",
           "region": "eu-west-1"
-        }
+        },
+        "EduHostDeploymentLogs": {},
+        "EduHostDeploymentsLogs": {},
+        "EduHostActiveDeployments": {},
+        "EduHostActiveDeploymentsLogs": {}
       },
       "auth": {
         "eduhostapp4035ae18": {}
+      },
+      "api": {
+        "EduHostActiveDeploymentsLogsAPI": {}
       }
     }
   }

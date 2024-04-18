@@ -1,4 +1,20 @@
 {
+  "api": {
+    "EduHostActiveDeploymentsLogsAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "EduHostActiveDeploymentsLogsLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "eduhostapp4035ae18": {
       "customAuth": false,
@@ -37,6 +53,68 @@
     }
   },
   "function": {
+    "EduHostActiveDeploymentsLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "EduHostActiveDeployments"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "EduHostActiveDeploymentsLogsLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "EduHostActiveDeploymentsLogs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "deploymentLogsLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "deploymentsLogsLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "EduHostDeploymentsLogs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "eduhostapp1252b7d6PreSignup": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -67,6 +145,25 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "eduhostdeploymentlogslambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "EduHostDeploymentLogs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "policy": {
       "s3Auth": {
         "providerPlugin": "awscloudformation",
@@ -75,6 +172,70 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_EduHostActiveDeploymentsLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "EduHostActiveDeploymentsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_EduHostActiveDeploymentsLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "EduHostActiveDeploymentsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_EduHostActiveDeploymentsLogsLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "EduHostActiveDeploymentsLogsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_EduHostActiveDeploymentsLogsLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "EduHostActiveDeploymentsLogsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_deploymentLogsLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deploymentLogsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_deploymentLogsLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deploymentLogsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_deploymentsLogsLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deploymentsLogsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_deploymentsLogsLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deploymentsLogsLambda"
+        }
+      ]
+    },
     "AMPLIFY_function_eduhostapp1252b7d6PreSignup_DOMAINALLOWLIST": {
       "usedBy": [
         {
@@ -227,6 +388,22 @@
         }
       ]
     },
+    "AMPLIFY_function_eduhostdeploymentlogslambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostdeploymentlogslambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_eduhostdeploymentlogslambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "eduhostdeploymentlogslambda"
+        }
+      ]
+    },
     "AMPLIFY_storage_eduhostappe7b01163_bucketName": {
       "usedBy": [
         {
@@ -245,6 +422,22 @@
     }
   },
   "storage": {
+    "EduHostActiveDeployments": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "EduHostActiveDeploymentsLogs": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "EduHostDeploymentLogs": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "EduHostDeploymentsLogs": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "eduhostappe7b01163": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
