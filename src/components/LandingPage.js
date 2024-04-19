@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import appLogo from '../assets/images/app_logo.png';
 import NavBar from './common/NavBar';
+import { Heading } from '@aws-amplify/ui-react';
 
 function LandingPage() {
   return (
@@ -9,7 +10,7 @@ function LandingPage() {
       <NavBar/>
       <main className="App-main">
         <div className="App-landing-text">
-          <h2>Website Hosting for Students. From Students</h2>
+          <Heading level={1} padding={5}>Website Hosting for Students. From Students.</Heading>
         </div>
       </main>
     </div>

@@ -4,7 +4,7 @@ import './App.css';
 import LandingPage from './components/LandingPage';
 import DashboardPage from './components/Auth/Dashboard'
 import AboutPage from './components/About';
-import ContactPage from './components/Contact';
+import TutorialPage from './components/Tutorial';
 import DeployerPage from './components/Auth/Deployer'
 import BuilderPage from './components/Auth/Builder'
 import { Amplify } from 'aws-amplify';
@@ -23,7 +23,7 @@ function App() {
           <Route path="/deployer" element={<DeployerPage />} />
           <Route path="/builder" element={<BuilderPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/tutorial" element={<TutorialPage />} />
         </Routes>
       </div>
     </Router>

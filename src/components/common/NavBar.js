@@ -13,7 +13,7 @@ function NavBar() {
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/tutorial">Tutorial</a></li>
                 <li className="unauth-logo"><img src={navBarLogo} alt="App Logo" /></li>
                 <li className="login-signup"><Button onClick={handleOnLogInClick}>My Account</Button></li>
             </ul>
