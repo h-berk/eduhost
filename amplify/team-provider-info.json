@@ -42,14 +42,13 @@
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/eduhostapp8a1ee75fPreSignup-3557514263522b545350-build.zip"
         },
-        "eduhostappabea6396PreSignup": {
+        "EduHostActiveDeploymentsLambda": {
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
-          "s3Key": "amplify-builds/eduhostappabea6396PreSignup-3073674b697041686f77-build.zip"
+          "s3Key": "amplify-builds/EduHostActiveDeploymentsLambda-36377575374b36797a76-build.zip"
         },
-        "policy": {},
-        "eduhostdeploymentlogslambda": {
+        "EduHostActiveDeploymentsLogsLambda": {
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
-          "s3Key": "amplify-builds/eduhostdeploymentlogslambda-476b48346f6f39536b68-build.zip"
+          "s3Key": "amplify-builds/EduHostActiveDeploymentsLogsLambda-35467332416a4c757930-build.zip"
         },
         "deploymentLogsLambda": {
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
@@ -59,30 +58,28 @@
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
           "s3Key": "amplify-builds/deploymentsLogsLambda-544b30672b4377624647-build.zip"
         },
-        "EduHostActiveDeploymentsLambda": {
+        "eduhostappabea6396PreSignup": {
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
-          "s3Key": "amplify-builds/EduHostActiveDeploymentsLambda-36377575374b36797a76-build.zip"
+          "s3Key": "amplify-builds/eduhostappabea6396PreSignup-3073674b697041686f77-build.zip"
         },
-        "EduHostActiveDeploymentsLogsLambda": {
+        "eduhostdeploymentlogslambda": {
           "deploymentBucketName": "amplify-eduhostapp-dev-180945-deployment",
-          "s3Key": "amplify-builds/EduHostActiveDeploymentsLogsLambda-35467332416a4c757930-build.zip"
-        }
+          "s3Key": "amplify-builds/eduhostdeploymentlogslambda-476b48346f6f39536b68-build.zip"
+        },
+        "policy": {}
       },
       "storage": {
         "eduhostappe7b01163": {
           "bucketName": "setu.eduhost.ie",
           "region": "eu-west-1"
         },
-        "EduHostDeploymentLogs": {},
-        "EduHostDeploymentsLogs": {},
         "EduHostActiveDeployments": {},
-        "EduHostActiveDeploymentsLogs": {}
+        "EduHostActiveDeploymentsLogs": {},
+        "EduHostDeploymentLogs": {},
+        "EduHostDeploymentsLogs": {}
       },
       "auth": {
         "eduhostapp4035ae18": {}
-      },
-      "api": {
-        "EduHostActiveDeploymentsLogsAPI": {}
       }
     }
   }

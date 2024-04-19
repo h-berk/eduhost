@@ -1,12 +1,14 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import { uploadData, remove, list} from 'aws-amplify/storage';
+import { uploadData, remove } from 'aws-amplify/storage';
 import '../../App.css';
 import ProtectedNavBar from '../common/ProtectedNavBar';
 import amplifyconfig from '../../amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
-import { withAuthenticator, Button } from '@aws-amplify/ui-react';
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
-import { put } from 'aws-amplify/api';
+import { put, get } from 'aws-amplify/api';
+import {Table, TableCell, TableBody, TableHead, TableRow } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure(amplifyconfig, {
   Storage: {
@@ -25,6 +27,25 @@ const DeployerPage = ({ signOut, user }) => {
   }, [user]);
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [deployments, setDeployments] = useState([]);
+  const [error, setError] = useState('');
+
+  const validateFile = (file) => {
+    if (!file) {
+      setError('No file selected.');
+      return false;
+    }
+    if (file.name !== 'index.html') {
+      setError('The file must be named "index.html".');
+      return false;
+    }
+    if (file.type !== 'text/html' && file.type !== 'application/xhtml+xml') {
+      setError('The file must be an HTML file.');
+      return false;
+    }
+    setError(''); // clear any previous errors
+    return true;
+  };
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -33,17 +54,21 @@ const DeployerPage = ({ signOut, user }) => {
   const handleDrop = useCallback(async (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    if (file) {
+    if (validateFile(file)) {
       setSelectedFile(file);
       await handleUpload(`${user.username}/${file.name}`, file);
+    } else {
+      alert('File is not a html file named index.html');
     }
   }, [user]);
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    if (file) {
+    if (validateFile(file)) {
       setSelectedFile(file);
       await handleUpload(`${user.username}/${file.name}`, file);
+    } else {
+      alert('File is not a html file named index.html');
     }
   };
 
@@ -63,8 +88,10 @@ const DeployerPage = ({ signOut, user }) => {
         userId: user.username,
         fileName: file.name,
         lastUpdateTime: new Date().toISOString(),
-        status: 'DEPLOYED'
+        status: 'DEPLOYED',
+        url: "https://setu.eduhost.ie/" + user.username
       });
+      loadDeployments();
     } catch (error) {
       console.error('Error uploading file:', error);
       alert('Error uploading file.');
@@ -94,49 +121,112 @@ const DeployerPage = ({ signOut, user }) => {
     }
   }
 
-  const handleDelete = async (filename) => { // TODO
+  async function getCurrentDeployments(userId) {
     try {
-      await remove({ key: filename });
+      const restOperation = get({
+        apiName: 'EduHostActiveDeploymentsLogsAPI',
+        path: '/deployments/' + userId,
+      });
+      const { body } = await restOperation.response;
+      const json = await body.json();
+      console.log(json)
+      return json;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  const loadDeployments = async () => {
+    const data = await getCurrentDeployments(user.username);
+    setDeployments(data);
+  };
+  
+  
+  useEffect(() => {
+    loadDeployments();
+  }, []);
+
+  const handleDelete = async () => { 
+    try {
+      const result = await remove({ key: `${user.username}/index.html`});
+      await postDeploymentLog({
+        userId: user.username,
+        fileName: 'index.html',
+        lastUpdateTime: new Date().toISOString(),
+        status: 'DELETED',
+        url: 'https://setu.eduhost.ie/' + user.username
+      });
+      console.log('File deleted successfully: ' , result);
+      alert('File deleted successfully!');
+      loadDeployments();
+
     } catch (error) {
       console.log('Error ', error);
     }
-  }
+  }  
 
-  const listFiles = async (user) => { // TODO
-    try {
-      const result = await list({
-        prefix: `${user.username}`
-      });
-      console.log(result);
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const handleButtonClick = () => {
+    document.getElementById('fileInput').click();
+  };
   
 
-  return (
-    <div className="App">
-      <ProtectedNavBar />
-      <main className="App-main">
-        <p>Please upload your "index.html file" below to deploy your website.</p>
-        <p><em>* Note that currently EduHost hosting only supports an index.html file with inbuilt CSS.</em></p>
-        <div className="file-drop-area" onDragOver={handleDragOver} onDrop={handleDrop}>
-          <span className="file-message">Drop files here or  </span>
-          <input
-            type="file"
-            id="fileInput"
-            hidden
-            onChange={handleFileChange}
-            accept=".html"
-          />
-          <label htmlFor="fileInput" className="file-upload-btn">Browse files</label>
-        </div>
-        {selectedFile && <div className="file-details">{selectedFile.name}</div>}
-        <p>Your site can be found <a href={`http://setu.eduhost.ie/${user.username}`}>here.</a></p>
-      </main>
-    </div>
-  );
-};
+return (
+  <div className="App">
+    <ProtectedNavBar />
+    <main className="App-main">
+      <div className="upload-instructions">
+        <p>Please upload your "index.html" file below to deploy your website.</p>
+        <p><em>Note: EduHost currently only supports an "index.html" file with inbuilt CSS.</em></p>
+      </div>
+      <Heading level={5} padding={5}>Deployer</Heading>
+      <div className="file-drop-area" onDragOver={handleDragOver} onDrop={handleDrop}>
+        <span className="file-message">Drop files here or </span>
+        <input
+          type="file"
+          id="fileInput"
+          hidden
+          onChange={handleFileChange}
+          accept=".html"
+        />
+        <Button onClick={handleButtonClick}>Browse Files</Button>
+      </div>
+      <div className="website-status">
+        <Heading level={5} padding={10}>My Website Status</Heading>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell as="th">Username</TableCell>
+              <TableCell as="th">File Name</TableCell>
+              <TableCell as="th">Last Update Time</TableCell>
+              <TableCell as="th">Status</TableCell>
+              <TableCell as="th">URL</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {deployments.map((dep, index) => (
+              <TableRow key={index}>
+                <TableCell>{dep.userId}</TableCell>
+                <TableCell>{dep.fileName}</TableCell>
+                <TableCell>{dep.lastUpdateTime}</TableCell>
+                <TableCell>{dep.status}</TableCell>
+                <TableCell>
+                  <a href={dep.url}>
+                    {dep.url}
+                  </a>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="delete-deployment-div">
+        <Button className="delete-button" onClick={handleDelete}>Delete my Website</Button>
+      </div>
+    </main>
+  </div>
+);
+}
 
 export default withAuthenticator(DeployerPage);
+
+

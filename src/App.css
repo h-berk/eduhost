@@ -56,12 +56,12 @@
 
 .form-container {
   width: 100%;
-  max-width: 500px; /* Maximum form width */
+  max-width: 500px; 
   padding-top: 100px;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 60px; /* Add some margin outside the form */
+  margin: 60px; 
 }
 
 .logo {
@@ -70,7 +70,7 @@
 }
 
 .logo img {
-  max-height: 50px; /* Adjust based on your preference */
+  max-height: 50px; 
 }
 
 .unauth-logo {
@@ -79,7 +79,7 @@
 }
 
 .unauth-logo img {
-  max-height: 50px; /* Adjust based on your preference */
+  max-height: 50px; 
 }
 
 .App-nav li {
@@ -87,7 +87,7 @@
 }
 
 .login-signup {
-  margin-left: auto; /* Pushes the sign out button to the right */
+  margin-left: auto; 
 }
 
 .App-nav a {
@@ -155,15 +155,17 @@
 
 .file-drop-area {
   border: 2px dashed #ccc;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 5px;
+  padding: 10px;
   text-align: center;
-  margin: 20px;
+  margin: 5px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
 .file-message {
   margin-bottom: 20px;
+  font-size: large;
 }
 
 .file-upload-btn {
@@ -192,10 +194,10 @@
 }
 
 .dashboard-button {
-  background-color: #4CAF50; /* Green background */
-  color: white; /* White text */
+  background-color: #4CAF50; 
+  color: white; 
   padding: 20px 40px; 
-  border: none; /* No border */
+  border: none; 
   border-radius: 10px; 
   cursor: pointer; 
   font-size: 24px; 
@@ -205,3 +207,27 @@
   background-color: #db91f9; 
 }
 
+.delete-deployment-div {
+  padding: 20px 40px; 
+}
+
+
+.upload-instructions h2 {
+  color: #333;
+  margin-bottom: 8px; 
+}
+
+.upload-instructions p {
+  font-size: 20px; 
+  color: #000000; 
+  line-height: 1.5; 
+  margin-bottom: 10px; 
+}
+
+.upload-instructions em {
+  font-size: 16px; 
+  color: #888; 
+  font-style: italic; 
+  display: block; 
+  margin-top: 10px; 
+}

@@ -23,15 +23,15 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type FileUploaderInputValues = {
-    data?: string;
+    file?: string;
 };
 export declare type FileUploaderValidationValues = {
-    data?: ValidationFunction<string>;
+    file?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type FileUploaderOverridesProps = {
     FileUploaderGrid?: PrimitiveOverrideProps<GridProps>;
-    data?: PrimitiveOverrideProps<StorageManagerProps>;
+    file?: PrimitiveOverrideProps<StorageManagerProps>;
 } & EscapeHatchProps;
 export declare type FileUploaderProps = React.PropsWithChildren<{
     overrides?: FileUploaderOverridesProps | undefined | null;

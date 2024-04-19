@@ -18,16 +18,16 @@ import { Field } from "@aws-amplify/ui-react/internal";
 export default function FileUploader(props) {
   const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
-    data: undefined,
+    file: undefined,
   };
-  const [data, setData] = React.useState(initialValues.data);
+  const [file, setFile] = React.useState(initialValues.file);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setData(initialValues.data);
+    setFile(initialValues.file);
     setErrors({});
   };
   const validations = {
-    data: [{ type: "Required" }],
+    file: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -55,7 +55,7 @@ export default function FileUploader(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         const modelFields = {
-          data,
+          file,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -82,8 +82,8 @@ export default function FileUploader(props) {
       {...rest}
     >
       <Field
-        errorMessage={errors.data?.errorMessage}
-        hasError={errors.data?.hasError}
+        errorMessage={errors.file?.errorMessage}
+        hasError={errors.file?.hasError}
         label={"Website Deployer"}
         descriptiveText={
           "*Please note EduHost only supports index.html files with inbuilt CSS as of now"
@@ -92,38 +92,38 @@ export default function FileUploader(props) {
       >
         <StorageManager
           onUploadSuccess={({ key }) => {
-            setData((prev) => {
+            setFile((prev) => {
               let value = key;
               if (onChange) {
                 const modelFields = {
-                  data: value,
+                  file: value,
                 };
                 const result = onChange(modelFields);
-                value = result?.data ?? value;
+                value = result?.file ?? value;
               }
               return value;
             });
           }}
           onFileRemove={({ key }) => {
-            setData((prev) => {
-              let value = initialValues?.data;
+            setFile((prev) => {
+              let value = initialValues?.file;
               if (onChange) {
                 const modelFields = {
-                  data: value,
+                  file: value,
                 };
                 const result = onChange(modelFields);
-                value = result?.data ?? value;
+                value = result?.file ?? value;
               }
               return value;
             });
           }}
           processFile={processFile}
-          accessLevel={"private"}
+          accessLevel={"public"}
           acceptedFileTypes={[".html"]}
           isResumable={false}
           showThumbnails={true}
           maxFileCount={1}
-          {...getOverrideProps(overrides, "data")}
+          {...getOverrideProps(overrides, "file")}
         ></StorageManager>
       </Field>
       <Flex
