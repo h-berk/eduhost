@@ -10,6 +10,12 @@ import { put, get } from 'aws-amplify/api';
 import {Table, TableCell, TableBody, TableHead, TableRow } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
+  /*
+  * Configure Amplify Storage to resolve prefixes properly.
+  * Uploads user's files to their own subdirectory in main bucket -> setu.eduhost.ie/username/index.html
+  * 
+  */
+
 Amplify.configure(amplifyconfig, {
   Storage: {
     S3: {
@@ -23,13 +29,32 @@ Amplify.configure(amplifyconfig, {
 });
 
 const DeployerPage = ({ signOut, user }) => {
+
+  /*////////////////////////////////////
+  *           Initial Rendering
+  */////////////////////////////////////
+
   useEffect(() => {
   }, [user]);
 
+  useEffect(() => {
+    loadDeployments();
+  }, []);
+
+  /*
+  * Different states required for re-rendering/updating of elements
+  */
   const [selectedFile, setSelectedFile] = useState(null);
   const [deployments, setDeployments] = useState([]);
   const [error, setError] = useState('');
 
+  /*////////////////////////////////////
+  *           File Uploading
+  */////////////////////////////////////
+
+  /*
+  * A function to validate uploaded file is named 'index.html' and is a HTML file.
+  */
   const validateFile = (file) => {
     if (!file) {
       setError('No file selected.');
@@ -40,17 +65,23 @@ const DeployerPage = ({ signOut, user }) => {
       return false;
     }
     if (file.type !== 'text/html' && file.type !== 'application/xhtml+xml') {
-      setError('The file must be an HTML file.');
+      setError('The file must be a HTML file.');
       return false;
     }
-    setError(''); // clear any previous errors
+    setError(''); 
     return true;
   };
 
+ /*
+ * Prevents the default drag-over behavior to enable handling of dropped files.
+ */
   const handleDragOver = (e) => {
     e.preventDefault();
   };
 
+ /*
+ * Handles file drop: validates the file and initiates upload if valid, alerts if not.
+ */
   const handleDrop = useCallback(async (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
@@ -62,6 +93,10 @@ const DeployerPage = ({ signOut, user }) => {
     }
   }, [user]);
 
+
+  /*
+  * Handles file change: validates the file and initiates upload if valid, alerts if not.
+  */
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (validateFile(file)) {
@@ -72,6 +107,12 @@ const DeployerPage = ({ signOut, user }) => {
     }
   };
 
+
+  /*
+  * Handles file uploading to S3 using uploadData Amplify Storage function
+  * Uploads to user's own subdirectory. Alerts on successful deployment and logs to DynamoDB.
+  * Refreshes table state to reload latest status of deployment.
+  */
   const handleUpload = async (key, file) => {
     try {
       const result = await uploadData({
@@ -97,7 +138,50 @@ const DeployerPage = ({ signOut, user }) => {
       alert('Error uploading file.');
     }
   };
+
+  /*
+  * Event handler for file input button
+  */
+  const handleButtonClick = () => {
+    document.getElementById('fileInput').click();
+  };
+
+
+  /*////////////////////////////////////
+  *           File Deleting
+  */////////////////////////////////////
+
+  /*
+  * Handles file deletion from S3 using remove Amplify Storage function
+  * Logs to DynamoDB on successful deletion, alerts in browser if not.
+  */
+  const handleDelete = async () => { 
+    try {
+      const result = await remove({ key: `${user.username}/index.html`});
+      await postDeploymentLog({
+        userId: user.username,
+        fileName: 'index.html',
+        lastUpdateTime: new Date().toISOString(),
+        status: 'DELETED',
+        url: 'https://setu.eduhost.ie/' + user.username
+      });
+      console.log('File deleted successfully: ' , result);
+      alert('File deleted successfully!');
+      loadDeployments();
+
+    } catch (error) {
+      console.log('Error ', error);
+    }
+  }  
+
+  /*////////////////////////////////////
+  *         DynamoDB Logging
+  */////////////////////////////////////
   
+  /*
+  * Sends a PUT req to REST API that acts as a proxy for DynamoDB.
+  * Creates or Updates log with new record
+  */
   async function postDeploymentLog(record) {
     try {
       const restOperation = put({
@@ -121,6 +205,10 @@ const DeployerPage = ({ signOut, user }) => {
     }
   }
 
+  /*
+  * Sends a GET req to REST API that acts as a proxy for DynamoDB.
+  * Queries deployment logs based on username parameter
+  */
   async function getCurrentDeployments(userId) {
     try {
       const restOperation = get({
@@ -136,39 +224,13 @@ const DeployerPage = ({ signOut, user }) => {
     }
   }
 
+  /*
+  * Retrieves logs from DynamoDB and updates deployments state for table to re-render.
+  */
   const loadDeployments = async () => {
     const data = await getCurrentDeployments(user.username);
     setDeployments(data);
   };
-  
-  
-  useEffect(() => {
-    loadDeployments();
-  }, []);
-
-  const handleDelete = async () => { 
-    try {
-      const result = await remove({ key: `${user.username}/index.html`});
-      await postDeploymentLog({
-        userId: user.username,
-        fileName: 'index.html',
-        lastUpdateTime: new Date().toISOString(),
-        status: 'DELETED',
-        url: 'https://setu.eduhost.ie/' + user.username
-      });
-      console.log('File deleted successfully: ' , result);
-      alert('File deleted successfully!');
-      loadDeployments();
-
-    } catch (error) {
-      console.log('Error ', error);
-    }
-  }  
-
-  const handleButtonClick = () => {
-    document.getElementById('fileInput').click();
-  };
-  
 
 return (
   <div className="App">
@@ -228,5 +290,3 @@ return (
 }
 
 export default withAuthenticator(DeployerPage);
-
-

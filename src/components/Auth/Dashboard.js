@@ -10,6 +10,10 @@ import { withAuthenticator, Heading, Button } from '@aws-amplify/ui-react';
 Amplify.configure(amplifyconfig);
 
 const DashboardPage = ({ signOut, user }) => {
+  
+  /*
+  * Functions to handle user navigation to builder and deployer using Buttons from Amplify UI
+  */
   const navigate = useNavigate();
 
   useEffect(() => {
