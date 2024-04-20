@@ -130,7 +130,7 @@ const DeployerPage = ({ signOut, user }) => {
         fileName: file.name,
         lastUpdateTime: new Date().toISOString(),
         status: 'DEPLOYED',
-        url: "https://setu.eduhost.ie/" + user.username
+        url: "https://www.setu.eduhost.ie/" + user.username
       });
       loadDeployments();
     } catch (error) {
@@ -163,7 +163,7 @@ const DeployerPage = ({ signOut, user }) => {
         fileName: 'index.html',
         lastUpdateTime: new Date().toISOString(),
         status: 'DELETED',
-        url: 'https://setu.eduhost.ie/' + user.username
+        url: 'https://www.setu.eduhost.ie/' + user.username
       });
       console.log('File deleted successfully: ' , result);
       alert('File deleted successfully!');

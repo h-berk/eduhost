@@ -80,6 +80,15 @@
       },
       "auth": {
         "eduhostapp4035ae18": {}
+      },
+      "api": {
+        "EduHostActiveDeploymentsLogsAPI": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2i9glx1zuc3hj",
+          "type": "manual"
+        }
       }
     }
   }
