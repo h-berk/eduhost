@@ -39,7 +39,7 @@
 .App-nav {
   background: transparent;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   top: 0;
   width: 100%;
@@ -52,6 +52,7 @@
   list-style: none;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; 
   padding: 0;
 }
 
@@ -65,22 +66,15 @@
   margin: 60px; 
 }
 
-.logo {
-  flex-grow: 0.8;
-  text-align: center;
+.logo, .unauth-logo {
+  flex: 0.9; 
+  text-align: center; 
 }
 
-.logo img {
+.logo img, .unauth-logo img {
+  height: auto;
   max-height: 50px; 
-}
-
-.unauth-logo {
-  flex-grow: 0.9;
-  text-align: center;
-}
-
-.unauth-logo img {
-  max-height: 50px; 
+  width: auto; 
 }
 
 .App-nav li {
@@ -101,20 +95,6 @@
 
 .App-nav a:hover {
   background-color: #5c5a5a;
-}
-
-.contact-form-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
 }
 
 .form-group {
@@ -268,4 +248,14 @@
   border-top: 1px solid #eee;
   padding-top: 10px;
   margin-top: 20px;
+}
+
+.about-section {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 30px;
+  width: 80%;
+  font-size: 20px;
 }
