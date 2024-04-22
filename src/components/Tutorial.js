@@ -9,13 +9,12 @@ function TutorialPage() {
         <NavBar/>
         <main className="App-main">
           <div className="tutorial-heading">
-            
           </div>
           <section className="tutorial-section">
           <Heading level={1} padding={5}>How to Build and Host Your Website with EduHost</Heading>
             <ul >
               <li>
-                <strong>Sign Up:</strong> Create an EduHost account by signing up with your SETU email to access our tools and resources.
+                <strong>Sign Up:</strong> Create an EduHost account by signing up with your SETU email using 'My Account' in the top right.
               </li>
             </ul>
             Builder
