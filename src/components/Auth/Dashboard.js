@@ -33,10 +33,14 @@ const DashboardPage = ({ signOut, user }) => {
       <div className="App-title">
       <Heading level={1}>Hello {user.username}</Heading>
       </div>
-        <div className="button-group">
-          <Button onClick={() => handleNavigate('/builder')} className="dashboard-button">Builder</Button>
-          <Button onClick={() => handleNavigate('/deployer')} className="dashboard-button">Deployer</Button>
-        </div>
+      <div className="prompt">
+        <p>Welcome to EduHost. Choose an option below to get started.</p>
+      </div>
+      <div className="button-group">
+        <Button onClick={() => handleNavigate('/tutorial')} className="dashboard-button">Tutorial</Button>
+        <Button onClick={() => handleNavigate('/builder')} className="dashboard-button">Builder</Button>
+        <Button onClick={() => handleNavigate('/deployer')} className="dashboard-button">Deployer</Button>
+      </div>
       </main>
       <footer><p>&copy; 2024 EduHost</p></footer>
     </div>

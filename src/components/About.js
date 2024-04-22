@@ -16,6 +16,7 @@ function AboutPage() {
             Whether you have zero coding experience or have your own static website already coded, EduHost is the platform to provide you with the tools and resources to succeed in building your
             online presence.
           </p>
+          <p className='copyright'>&copy; 2024 EduHost</p>
         </section>
       </main>
       <footer><p>&copy; 2024 EduHost</p></footer>

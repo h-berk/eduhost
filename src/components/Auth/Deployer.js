@@ -133,6 +133,7 @@ const DeployerPage = ({ signOut, user }) => {
         url: "https://www.setu.eduhost.ie/" + user.username
       });
       loadDeployments();
+      setSelectedFile(null);
     } catch (error) {
       console.error('Error uploading file:', error);
       alert('Error uploading file.');

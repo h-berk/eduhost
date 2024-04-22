@@ -228,11 +228,6 @@ export default function WebsiteBuilderForm(props) {
           value="purple"
           {...getOverrideProps(overrides, "colouroption5")}
         ></option>
-        <option
-          children="black"
-          value="black"
-          {...getOverrideProps(overrides, "colouroption6")}
-        ></option>
       </SelectField>
       <TextField
         label={
