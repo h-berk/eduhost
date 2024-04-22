@@ -128,7 +128,15 @@ const DeployerPage = ({ signOut, user }) => {
       await postDeploymentLog({
         userId: user.username,
         fileName: file.name,
-        lastUpdateTime: new Date().toISOString(),
+        lastUpdateTime: new Date().toLocaleString('en-IE', {
+          timeZone: 'Europe/Dublin',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }),
         status: 'DEPLOYED',
         url: "https://www.setu.eduhost.ie/" + user.username
       });
@@ -162,7 +170,15 @@ const DeployerPage = ({ signOut, user }) => {
       await postDeploymentLog({
         userId: user.username,
         fileName: 'index.html',
-        lastUpdateTime: new Date().toISOString(),
+        lastUpdateTime: new Date().toLocaleString('en-IE', {
+          timeZone: 'Europe/Dublin',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }),
         status: 'DELETED',
         url: 'https://www.setu.eduhost.ie/' + user.username
       });
