@@ -38,6 +38,7 @@ const DashboardPage = ({ signOut, user }) => {
           <Button onClick={() => handleNavigate('/deployer')} className="dashboard-button">Deployer</Button>
         </div>
       </main>
+      <footer><p>&copy; 2024 EduHost</p></footer>
     </div>
   );
 }

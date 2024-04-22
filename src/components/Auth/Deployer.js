@@ -285,6 +285,7 @@ return (
         <Button className="delete-button" onClick={handleDelete}>Delete my Website</Button>
       </div>
     </main>
+    <footer><p>&copy; 2024 EduHost</p></footer>
   </div>
 );
 }
