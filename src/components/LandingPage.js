@@ -13,6 +13,7 @@ function LandingPage() {
           <Heading level={1} padding={5}>Website Hosting for Students. From Students.</Heading>
         </div>
       </main>
+      <footer><p>&copy; 2024 EduHost</p></footer>
     </div>
   );
 }

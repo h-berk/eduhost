@@ -8,10 +8,8 @@ function AboutPage() {
     <div className="App">
       <NavBar/>
       <main className="App-main">
-        <div className="about-heading">
-          <Heading level={1} padding={5}>About Us</Heading>
-        </div>
         <section className="about-section">
+        <Heading level={1} padding={5}>About Us</Heading>
           <p>
             EduHost is designed to provide an all-in-one website builder and hosting platform for students. 
             Developed by a final year computer science student in SETU Waterford, we aim to make website hosting and building accessible for all students. 
@@ -20,6 +18,7 @@ function AboutPage() {
           </p>
         </section>
       </main>
+      <footer><p>&copy; 2024 EduHost</p></footer>
     </div>
   );
 }

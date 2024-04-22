@@ -42,6 +42,7 @@ function TutorialPage() {
             <p>&copy; 2024 EduHost</p>
           </section>
         </main>
+        <footer><p>&copy; 2024 EduHost</p></footer>
       </div>
     );
   }

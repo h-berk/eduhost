@@ -46,6 +46,7 @@ return (
             <WebsiteBuilderForm onSubmit={handleSubmit} />
         </div>
         </main>
+        <footer><p>&copy; 2024 EduHost</p></footer>
     </div>
     );
       

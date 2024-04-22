@@ -259,3 +259,11 @@
   width: 80%;
   font-size: 20px;
 }
+
+.footer p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  padding-top: 10px;
+  margin-top: 20px;
+}
